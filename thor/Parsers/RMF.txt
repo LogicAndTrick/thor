@@ -1,0 +1,181 @@
+THE RMF FILE FORMAT
+Parsing and converting to .map
+
+Type sizes
+char: 1 byte
+byte: 1 byte
+bool: 1 byte
+int: 4 bytes
+float: 4 bytes
+string: 1 byte per character
+
+Note that the strings used are C strings, and therefore end at hex value 0x00. This is the important for the "fixed length" strings, but is also present in the "length given" strings.
+
+ints and floats are stored in little-endian form, meaning you have to reverse the bytes before converting them. An example for float is below, in step 1.
+
+Many values are stored as 32-bit floating point numbers. To parse it without the help of some automatic binary parser (examples, fstream in C++, BinaryReader in C#), you'll have to load up the 4 bytes and convert them manually.
+
+Example: cd cc 0c 40
+
+1. 	Reverse the hex
+	Why? Because the number is stored in little-endian, and we want it in big-endian.
+	40 0c cc cd
+
+2. 	Convert to binary
+	01000000 00001100 11001100 11001101
+
+3.	This is all standard floating point conversion here.
+	0 10000000 00011001100110011001101
+	128 - 127 = 1
+	1.00011001100110011001101 << 1 = 10.0011001100110011001101
+	10.0011001100110011001101 = 2 + 1/8 + 1/16 + 1/128 + 1/256 + ...
+	= 2.200000047683716 ~= 2.2
+	
+The example RMF is version 2.2. This version is the standard of version 3.4 and 3.5 of Hammer, and this is the only version referenced in this documentation. Note that there are different versions of RMF, and they are all different in some way. Version 2.2 is the newest version, and has the most features. If you have an older version RMF, open it in Hammer 3.4 and save it again. It will get converted. I have version 2.1 of Worldcraft, which uses RMF version 1.8, so you might get documentation for that sometime in the future. I'm not sure if Worldcraft 3.3 uses a different RMF version to Worldcraft 2.1 or Hammer 3.4.
+
+*Structures starting with * are never found explicitly within the RMF, but are used for clarification.
+
+---Standard Header---
+
+Version (float)
+"RMF" (string, no terminating 0x00 - 3 bytes only!)
+
+---Visgroups---
+
+*CMapVisgroup:
+	name (string of fixed length: 128 bytes)
+	32-bit rgba colour (byte * 4)
+	visgroup id (int)
+	visible (bool)
+	3 unused bytes (byte * 3)
+
+Number of visgroups (int)
+Visgroups:
+	visgroup (CMapVisgroup)
+
+---World---
+
+*CMapBase:
+	length of name of class (byte)
+	name of class (string)
+	visgroup id (int)
+	colour in RGB (byte, byte, byte)
+	number of children (int)
+	children:
+		CMap-Group,-Solid,-Entity
+
+*CMapVertex:
+	x co-ordinate (float)
+	y co-ordinate (float)
+	z co-ordinate (float)
+
+*CMapFace:
+	texture name (string of fixed length: 260)
+	uaxis (float, float, float, float)
+	vaxis (float, float, float, float)
+	rotation (float)
+	uscale (float)
+	vscale (float)
+	smoothing groups (byte)
+	material (byte)
+	surface (int)
+	contents (int)
+	lightmapscale (int)
+	2 unused bytes (byte, byte)
+	number of vertices (int)
+	vertices:
+		vertex (CMapVertex)
+	plane co-ordinate 1 (x, y, z) (float, float, float)
+	plane co-ordinate 2 (x, y, z) (float, float, float)
+	plane co-ordinate 3 (x, y, z) (float, float, float)
+
+*CMapProperty:
+	length of key (byte)
+	key (string)
+	length of value (byte)
+	value (string)
+
+*CMapEntityData:
+	length of entity name (byte)
+	entity name (string)
+	4 unused bytes (byte, byte, byte, byte)
+	flags (int)
+	number of properties (int)
+	properties:
+		property (CMapProperty)
+	12 unused bytes (byte * 12)
+
+*CMapNode:
+	position (x, y, z) (float, float, float)
+	ID (int)
+	name (string, fixed length: 128)
+	number of properties (int)
+	properties:
+		property (CMapProperty)
+
+*CMapPath:
+	name (string, fixed length: 128. ignore everything after \0)
+	entity type (string, fixed length: 128. ignore everything after \0)
+	direction? (int)
+	number of nodes (int)
+	nodes:
+		node (CMapNode)
+
+This is where all the "real" content is stored. If you want to convert the RMF to a valid MAP file, this is where everything you need is stored.
+
+there are the following possibilities:
+
+Syntax:
+Parent -> Child
+"-" means that the parent has no children.
+
+World and Group are pure container formats.
+There can only be one World, and it is the eventual parent of everything.
+World -> Group,Solid,Entity
+Group -> Group,Solid,Entity
+
+These are the other possible situations:
+Entity -> Solid   (brush-based entity)
+Entity -> -       (point-based entity)
+Solid  -> -       (regular brush)
+
+The following are invalid:
+Group,Solid,Entity -> World
+Solid -> Group,Solid,Entity
+Entity -> Group
+
+CMapWorld:
+	base (CMapBase)
+	entity data (CMapEntityData)
+	number of paths (int)
+	paths:
+		path (CMapPath)
+	
+CMapGroup:
+	base (CMapBase)
+
+CMapSolid:
+	base (CMapBase)
+	number of faces (int)
+	faces:
+		face (CMapFace)
+
+CMapEntity:
+	base (CMapBase)
+	entity data (CMapEntityData)
+	2 unused bytes (flags?) (byte * 2)
+	origin (x, y, z) (float, float, float)
+	4 unused bytes (byte * 4)
+	
+---Footer---
+
+*CMapCamera:
+	eye position co-ordinate (x, y, z) (float, float, float)
+	looking at  co-ordinate (x, y, z) (float, float, float)
+
+"DOCINFO" (string, with terminating \0)
+camera version number? (float)
+active camera (int)
+number of cameras (int)
+cameras:
+	camera (CMapCamera)

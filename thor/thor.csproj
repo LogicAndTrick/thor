@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{D10509A8-E6C8-4007-9EAB-C4079AD30FD5}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>thor</RootNamespace>
+    <AssemblyName>thor</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\Dan\Application Data\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <StartupObject>thor.Program</StartupObject>
+    <NoWarn>3005,3019,3001,3002,3003,3009</NoWarn>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <ItemGroup>
+    <Reference Include="csgl">
+      <HintPath>csgl.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython">
+      <HintPath>IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Core">
+      <HintPath>Microsoft.Scripting.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.Compatibility">
+      <HintPath>OpenTK.Compatibility.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl">
+      <HintPath>OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickForms">
+      <HintPath>QuickForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Brush Scripts\BlockBrush.cs" />
+    <Compile Include="Brush Scripts\ConeBrush.cs" />
+    <Compile Include="Brush Scripts\CylinderBrush.cs" />
+    <Compile Include="Brush Scripts\PipeBrush.cs" />
+    <Compile Include="Brush Scripts\PipeBrushForm.cs">
+      <DependentUpon>PipeBrush.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Brush Scripts\PipeBrushForm.Designer.cs">
+      <DependentUpon>PipeBrushForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Brush Scripts\SpikeBrush.cs" />
+    <Compile Include="Brush Scripts\TetrehedronBrush.cs" />
+    <Compile Include="Brush Scripts\TorusBrush.cs" />
+    <Compile Include="Brush Scripts\TorusBrushForm.cs">
+      <DependentUpon>TorusBrush.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Brush Scripts\TorusBrushForm.Designer.cs">
+      <DependentUpon>TorusBrushForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Accessor.cs" />
+    <Compile Include="Common\Converter.cs" />
+    <Compile Include="Common\DecimalCoordinate.cs" />
+    <Compile Include="Common\DecimalMatrix3.cs" />
+    <Compile Include="Common\DecimalPlane.cs" />
+    <Compile Include="Common\Log.cs" />
+    <Compile Include="Common\PluginAPI.cs" />
+    <Compile Include="Common\Vector4.cs" />
+    <Compile Include="Database\Data.cs" />
+    <Compile Include="Database\Models\Build.cs" />
+    <Compile Include="Database\Models\Engine.cs" />
+    <Compile Include="Database\Models\Game.cs" />
+    <Compile Include="Database\Models\Preset.cs" />
+    <Compile Include="Database\Models\Setting.cs" />
+    <Compile Include="Editing Tools\ActionType.cs" />
+    <Compile Include="Editing Tools\BaseSelectTool.cs" />
+    <Compile Include="Editing Tools\BaseTool.cs" />
+    <Compile Include="Editing Tools\BoxTool.cs" />
+    <Compile Include="Editing Tools\BrushTool.cs" />
+    <Compile Include="Editing Tools\CameraTool.cs" />
+    <Compile Include="Editing Tools\ClipTool.cs" />
+    <Compile Include="Editing Tools\EntityTool.cs" />
+    <Compile Include="Editing Tools\OldSelectTool.cs" />
+    <Compile Include="Editing Tools\SelectTool.cs" />
+    <Compile Include="Editing Tools\TextureChangeEventArgs.cs">
+      <DependentUpon>TextureTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editing Tools\TextureJustifyEventArgs.cs">
+      <DependentUpon>TextureTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editing Tools\TextureModeChangeEventArgs.cs">
+      <DependentUpon>TextureTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editing Tools\TexturePropertyChangeEventArgs.cs">
+      <DependentUpon>TextureTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editing Tools\TextureTool.cs" />
+    <Compile Include="Editing Tools\TextureToolForm.cs">
+      <DependentUpon>TextureTool.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editing Tools\TextureToolForm.Designer.cs">
+      <DependentUpon>TextureToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editing Tools\HotkeyEnabledForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editing Tools\VMTool.cs" />
+    <Compile Include="Forms\CompileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CompileForm.Designer.cs">
+      <DependentUpon>CompileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Components\BuildControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\BuildValueCheckbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\BuildValueCheckbox.Designer.cs">
+      <DependentUpon>BuildValueCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Components\QuadSplitDragPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\TabStrip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\TabStrip.Designer.cs">
+      <DependentUpon>TabStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Components\TextureGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockConsole.Designer.cs">
+      <DependentUpon>DockConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockEdit.Designer.cs">
+      <DependentUpon>DockEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockMapTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockMapTools.Designer.cs">
+      <DependentUpon>DockMapTools.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockObject.Designer.cs">
+      <DependentUpon>DockObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockTexture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockTexture.Designer.cs">
+      <DependentUpon>DockTexture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockVisgroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\DockVisgroups.Designer.cs">
+      <DependentUpon>DockVisgroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\NewDockEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Dock Controls\NewDockEdit.Designer.cs">
+      <DependentUpon>NewDockEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FGDEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FGDEditor.Designer.cs">
+      <DependentUpon>FGDEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TextureBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextureBrowserForm.Designer.cs">
+      <DependentUpon>TextureBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General Use\EventArgs.cs" />
+    <Compile Include="General Use\EventList.cs" />
+    <Compile Include="History\HistoryCreate.cs" />
+    <Compile Include="History\HistoryDelete.cs" />
+    <Compile Include="History\HistoryEdit.cs" />
+    <Compile Include="History\HistoryItem.cs" />
+    <Compile Include="History\HistorySelect.cs" />
+    <Compile Include="History\HistoryTransaction.cs" />
+    <Compile Include="Hotkeys\Hotkeys.cs" />
+    <Compile Include="Hotkeys\oldBrokenHotkeys.cs" />
+    <Compile Include="Hotkeys\StaticHotkeys.cs" />
+    <Compile Include="Map Objects\MapDisplacement.cs" />
+    <Compile Include="Forms\Components\AngleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\AngleControl.Designer.cs">
+      <DependentUpon>AngleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Components\QuadSplitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\QuadSplitPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\QuadSplitPanel.Designer.cs">
+      <DependentUpon>QuadSplitPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GameChooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameChooseForm.Designer.cs">
+      <DependentUpon>GameChooseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EntityEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EntityEditor.Designer.cs">
+      <DependentUpon>EntityEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game Data Objects\GameData.cs" />
+    <Compile Include="Game Data Objects\GameDataBehaviour.cs" />
+    <Compile Include="Game Data Objects\GameDataChoice.cs" />
+    <Compile Include="Game Data Objects\GameDataClassTypes.cs" />
+    <Compile Include="Game Data Objects\GameDataIO.cs" />
+    <Compile Include="Game Data Objects\GameDataIOTypes.cs" />
+    <Compile Include="Game Data Objects\GameDataObject.cs" />
+    <Compile Include="Game Data Objects\GameDataProperty.cs" />
+    <Compile Include="Game Data Objects\GameDataVariableTypes.cs" />
+    <Compile Include="Map Objects\Document.cs" />
+    <Compile Include="Map Objects\MapCamera.cs" />
+    <Compile Include="Map Objects\MapClass.cs" />
+    <Compile Include="Map Objects\MapEntity.cs" />
+    <Compile Include="Map Objects\MapEntityData.cs" />
+    <Compile Include="Map Objects\MapFace.cs" />
+    <Compile Include="Map Objects\MapGroup.cs" />
+    <Compile Include="Map Objects\MapNode.cs" />
+    <Compile Include="Map Objects\MapObject.cs" />
+    <Compile Include="Map Objects\MapObjectException.cs" />
+    <Compile Include="Map Objects\MapOutput.cs" />
+    <Compile Include="Map Objects\MapPath.cs" />
+    <Compile Include="Map Objects\MapProperty.cs" />
+    <Compile Include="Map Objects\MapSolid.cs" />
+    <Compile Include="Map Objects\MapVertex.cs" />
+    <Compile Include="Map Objects\MapVisgroup.cs" />
+    <Compile Include="Map Objects\MapWorld.cs" />
+    <Compile Include="Models\GSModel.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Parsers\FGDParser.cs" />
+    <Compile Include="Parsers\GenericParser.cs" />
+    <Compile Include="Parsers\GenericStructure.cs" />
+    <Compile Include="Parsers\InvalidMapException.cs" />
+    <Compile Include="Parsers\MAPParser.cs" />
+    <Compile Include="Parsers\MapParserFactory.cs" />
+    <Compile Include="Parsers\MapParserInterface.cs" />
+    <Compile Include="Parsers\MDLParser.cs" />
+    <Compile Include="Parsers\RMFParser.cs" />
+    <Compile Include="Parsers\VMFParser.cs" />
+    <Compile Include="Brush Scripts\BrushInterface.cs" />
+    <Compile Include="Project Files\AssemblyInfo.cs" />
+    <Compile Include="Project Files\Program.cs" />
+    <Compile Include="Rendering\MapView3D.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rendering\NewGLMapView2D.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rendering\NewGLMapView2DXY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rendering\NewGLMapView2DXZ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rendering\NewGLMapView2DYZ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rendering\Renderer2D.cs" />
+    <Compile Include="Rendering\Renderer3D.cs" />
+    <Compile Include="Rendering\Textures\TextureManager.cs" />
+    <Compile Include="Rendering\Textures\TextureObject.cs" />
+    <Compile Include="Rendering\Textures\TexturePackage.cs" />
+    <Compile Include="Rendering\Textures\TexturePackageWAD.cs" />
+    <Compile Include="Rendering\Util\BoundingBox.cs" />
+    <Compile Include="Rendering\Util\Orientation2D.cs" />
+    <Compile Include="Rendering\Util\TextureType3D.cs" />
+    <Compile Include="Resources\Cursors\CustomCursor.cs" />
+    <Compile Include="Resources\Fonts\CustomFont.cs" />
+    <Compile Include="Settings\ControlValueHandler.cs" />
+    <Compile Include="Settings\DatabaseOperations.cs" />
+    <Compile Include="Settings\SettingBuildConfig.cs" />
+    <Compile Include="Settings\SettingGameConfig.cs" />
+    <Compile Include="Settings\Settings.cs" />
+    <Compile Include="ThorCursors.Designer.cs">
+      <DependentUpon>ThorCursors.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ThorFonts.Designer.cs">
+      <DependentUpon>ThorFonts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Transformations\Axis.cs" />
+    <Compile Include="Transformations\AxisRotation.cs" />
+    <Compile Include="Transformations\UnitTransformation.cs" />
+    <Compile Include="Transformations\Rotation.cs" />
+    <Compile Include="Transformations\Scale.cs" />
+    <Compile Include="Transformations\Skew.cs" />
+    <Compile Include="Transformations\CoordinateTransformation.cs" />
+    <Compile Include="Transformations\Translation.cs" />
+    <None Include="Plugins\Twister\Twister.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Wrappers\Examples\HLExtract.cs" />
+    <Compile Include="History\HistoryManager.cs" />
+    <Compile Include="Wrappers\HlLib.cs" />
+    <Compile Include="Wrappers\HLLibException.cs" />
+    <Compile Include="Wrappers\HLLibFunctions.cs" />
+    <Compile Include="Wrappers\HLLibTransaction.cs" />
+    <Compile Include="Wrappers\VtfLib.cs" />
+    <EmbeddedResource Include="Brush Scripts\PipeBrush.resx">
+      <DependentUpon>PipeBrushForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Brush Scripts\TorusBrush.resx">
+      <DependentUpon>TorusBrushForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editing Tools\TextureTool.resx">
+      <DependentUpon>TextureToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompileForm.resx">
+      <DependentUpon>CompileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Components\AngleControl.resx">
+      <DependentUpon>AngleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Components\BuildValueCheckbox.resx">
+      <DependentUpon>BuildValueCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Components\TabStrip.resx">
+      <DependentUpon>TabStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Components\TextureGridControl.resx">
+      <DependentUpon>TextureGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\DockConsole.resx">
+      <DependentUpon>DockConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\DockEdit.resx">
+      <DependentUpon>DockEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\DockMapTools.resx">
+      <DependentUpon>DockMapTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\DockObject.resx">
+      <DependentUpon>DockObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\DockTexture.resx">
+      <DependentUpon>DockTexture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\DockVisgroups.resx">
+      <DependentUpon>DockVisgroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dock Controls\NewDockEdit.resx">
+      <DependentUpon>NewDockEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FGDEditor.resx">
+      <DependentUpon>FGDEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameChooseForm.resx">
+      <DependentUpon>GameChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EntityEditor.resx">
+      <DependentUpon>EntityEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextureBrowserForm.resx">
+      <DependentUpon>TextureBrowserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThorCursors.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>thor</CustomToolNamespace>
+      <LastGenOutput>ThorCursors1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThorFonts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThorFonts1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Parsers\RMF.txt" />
+    <None Include="Plugins\TestPy\TestPlugin.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\Twister\PerlinNoise.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Project Files\app.config" />
+    <Content Include="ProfilingSessions\Session20090702_222020.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_222238.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_222831.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_223249.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_223935.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_230649.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_231010.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_231945.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_234116.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_234551.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_234832.sdps" />
+    <Content Include="ProfilingSessions\Session20090702_235710.sdps" />
+    <Content Include="ProfilingSessions\Session20090801_123303.sdps" />
+    <Content Include="ProfilingSessions\Session20090801_123416.sdps" />
+    <Content Include="ProfilingSessions\Session20090801_123441.sdps" />
+    <Content Include="ProfilingSessions\Session20090802_225635.sdps" />
+    <Content Include="ProfilingSessions\Session20090806_143107.sdps" />
+    <Content Include="ProfilingSessions\Session20090806_154023.sdps" />
+    <Content Include="ProfilingSessions\Session20090806_161421.sdps" />
+    <Content Include="ProfilingSessions\Session20090810_170005.sdps" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Deprecated\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Thorm\Thorm.csproj">
+      <Project>{39842B00-59FC-4134-AB95-EC0564909D57}</Project>
+      <Name>Thorm</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
